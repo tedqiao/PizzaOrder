@@ -15,6 +15,7 @@
 Route::match(['get'],'/','HomeController@index');
 Route::post('/','shipsController@show');
 Route::get('order/{item}','Ordercontroller@addtoCart');
+Route::get('rm/{item}','Ordercontroller@removeItem');
 Route::get('cart','Ordercontroller@showCart');
 Route::get('login/fb','FbloginController@login');
 Route::get('logout', 'FbloginController@logout');

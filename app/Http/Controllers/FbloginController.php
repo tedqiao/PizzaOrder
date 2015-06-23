@@ -33,8 +33,6 @@ class FbloginController extends Controller {
     }
 
     public function login() {
-        //echo $_GET['state'];
-        //print_r ($this->helper);
         return Redirect::to($this->loginUrl);
     }
     

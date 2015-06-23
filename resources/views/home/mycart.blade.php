@@ -23,6 +23,9 @@
             <td>
                 <?=$_SESSION['cart'][$item]?>
             </td>
+            <td>
+                <a class='btn btn-default' href="<?=url("rm/$item")?>">cancel</a>
+            </td>
         </tr>
     <?php endforeach ?>
 </table>
