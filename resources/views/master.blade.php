@@ -65,7 +65,11 @@ use App\fb_user;
                         </div>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a class='btn ' href="<?= !isset($_SESSION['auth']) ? url('login/fb') : url('logout') ?>"><?= isset($_SESSION['auth']) ? 'Log out' : 'FaceBooK' ?></a></li>
+                        <li>
+                            <div class="">
+                            <a class='btn btn-success form-control' href="<?= !isset($_SESSION['auth']) ? url('login/fb') : url('logout') ?>"><?= isset($_SESSION['auth']) ? 'Log out' : 'FaceBooK' ?></a>
+                            </div>
+                            </li>
                         <?php if(isset($_SESSION['user'])):
                             $obj=unserialize($_SESSION['user']);
                         ?>
