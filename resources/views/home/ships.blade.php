@@ -22,7 +22,7 @@
                             <a href="#"><?= $ship->hasModel ?></a>
                         </td>
                         <td>
-                            <div class='col-sm-6 input-group navbar-right'>
+                            <div class='col-sm-4 input-group navbar-right'>
                                 <input id='item_num' class="form-control" type='text' value='1'/>
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="button" onclick="alert('ok')">Add</button>

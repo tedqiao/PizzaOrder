@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -24,5 +24,13 @@ class orderController extends Controller
     
     function showCart(){
         return view('home.mycart');
+    }
+    
+    function removeItem($item){
+         if(isset($_SESSION['cart'])){
+            if(isset($item,$_SESSION['cart'][$item]))
+                unset($_SESSION['cart'][$item]);
+        }
+       return Redirect::to(url('cart'));
     }
 }
