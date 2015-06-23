@@ -16,8 +16,6 @@ class orderController extends Controller
                 $_SESSION['cart'][$item]+=1;
             else
              $_SESSION['cart'][$item]=1;
-        }else{
-            
         }
         
     }
