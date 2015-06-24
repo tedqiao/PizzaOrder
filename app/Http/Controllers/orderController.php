@@ -17,6 +17,10 @@ class orderController extends Controller
             else
              $_SESSION['cart'][$item]=1;
         }
+        if(!isset($_SESSION['auth'])){
+            echo 'sry member only';
+            return;
+        }
         if(sizeof($_SESSION['cart'])==0)
         return view('errors.noItems');
         return view('home.mycart');
@@ -24,6 +28,11 @@ class orderController extends Controller
     }
     
     function showCart(){
+        if(!isset($_SESSION['auth'])){
+            echo 'sry member only';
+            return;
+        }
+            
         if(sizeof($_SESSION['cart'])==0)
         return view('errors.noItems');
         return view('home.mycart');
@@ -34,6 +43,8 @@ class orderController extends Controller
             if(isset($item,$_SESSION['cart'][$item]))
                 unset($_SESSION['cart'][$item]);
         }
+        if(sizeof($_SESSION['cart'])==0)
+        return view('errors.noItems');
         return view('home.mycart');
     }
 }

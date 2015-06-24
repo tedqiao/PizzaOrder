@@ -1,0 +1,11 @@
+.fixed{
+    width: 30%;
+    margin-left:35%;
+    position: fixed;
+    padding: 10px;
+    padding-top:0px;
+    box-shadow: 10px 10px 5px;
+    border: 1px solid #444;
+    background-color: gainsboro;
+    
+}

@@ -19,6 +19,16 @@ Route::get('rm/{item}','Ordercontroller@removeItem');
 Route::get('cart','Ordercontroller@showCart');
 Route::get('login/fb','FbloginController@login');
 Route::get('logout', 'FbloginController@logout');
+Route::match(['get','post'],'login','loginController@login');
+
+
+//register
+Route::get('register', function () {
+    return view('register.register',['res'=>0]);
+});
+
+Route::post('register', 'usersController@create');
+
 
 
 Route::get('login/fb/callback', 'FbloginController@callback');

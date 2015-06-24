@@ -1,6 +1,6 @@
 <?php
-use App\fb_user;
 
+use App\fb_user;
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,10 +14,10 @@ use App\fb_user;
             });
         </script>
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-
+        <link rel="stylesheet" href="/css/mycss.css">
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
+        <script src="/js/home.js"></script>
         <!-- Latest compiled JavaScript -->
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     </head>
@@ -26,7 +26,7 @@ use App\fb_user;
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <button type="button" id="fixed" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -65,31 +65,25 @@ use App\fb_user;
                         </div>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
+                          <?php
+                        if (isset($_SESSION['user'])):
+                            $obj = unserialize($_SESSION['user']);
+                            ?>
+                            <li><img class='img-circle' src="<?= $obj->getPhoto() ?>"></li>
+                        <?php endif; ?>
                         <li>
-                            <div class="">
-                            <a class='btn btn-success form-control' href="<?= !isset($_SESSION['auth']) ? url('login/fb') : url('logout') ?>"><?= isset($_SESSION['auth']) ? 'Log out' : 'FaceBooK' ?></a>
-                            </div>
-                            </li>
-                        <?php if(isset($_SESSION['user'])):
-                            $obj=unserialize($_SESSION['user']);
-                        ?>
-                        <li><img src="<?=$obj->getPhoto()?>"></li>
-                        <?php endif;?>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Payment <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Visa</a></li>
-                                <li><a href="#">Paypal</a></li>
-                                <li><a href="#">Cash</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
+
+                            <a class='' href="<?= !isset($_SESSION['auth']) ? url('login') : url('logout') ?>"><?= isset($_SESSION['auth']) ? 'Log out' : 'Login' ?></a>
+
                         </li>
+                      
+
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
         @yield('content')
+
     </body>
 
 </html>
