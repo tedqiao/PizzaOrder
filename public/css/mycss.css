@@ -1,16 +1,31 @@
 .fixed{
-    width: 30%;
-    margin-left:26%;
+    width: 1400px;
+    height: 1000px;
+    margin-top:-100px;
+    margin-left:0px;
     position: fixed;
     z-index: 2;
-    padding: 10px;
-    padding-top:0px;
-    box-shadow: 10px 10px 5px;
-    border: 1px solid #444;
-    background-color: gainsboro;
+    
+   
+   
+    background-color: rgba(0, 0, 0, 0.5);
+    //filter: alpha(opacity=40); 
     
 }
 
+#login-form{
+   // margin:600px;
+   padding: 10px;
+   width: 400px;
+   height: 300px;
+    margin-top:200px;
+    margin-left:350px;
+    background-color: gainsboro;
+    box-shadow: 10px 10px 5px;
+     border: 1px solid #444;
+    //padding: 400px;
+    
+}
 
 footer {
   position: absolute;
