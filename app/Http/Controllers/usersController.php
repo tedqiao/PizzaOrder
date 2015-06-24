@@ -26,15 +26,6 @@ class usersController extends Controller
         }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
-    public function store()
-    {
-        //
-    }
 
     /**
      * Display the specified resource.

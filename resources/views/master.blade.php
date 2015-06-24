@@ -22,7 +22,7 @@ use App\fb_user;
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -50,7 +50,7 @@ use App\fb_user;
                                 <li role="separator" class="divider"></li>
                                 <li><a href="#">Separated link</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">One more separated link</a></li>
+                                <li><button class="" onclick="loadXMLDoc()">clickme</button></li>
                             </ul>
                         </li>
                     </ul>
@@ -82,24 +82,26 @@ use App\fb_user;
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-                 @yield('login')
-        <div class='container'>
-            <div class='row'>
-                <div class='col-sm-6'>
-                    @yield('left')
-                </div>
-                <div class='col-sm-6'>
-                    @yield('right')
-                   
-                </div>
-            </div>
+        @yield('login')
+        <div id='tbody'>
+            <div class='container'>
+                <div class='row'>
+                    <div class='col-sm-6'>
+                        @yield('left')
+                    </div>
+                    <div id="mydiv" class='col-sm-6'>
+                        @yield('right')
 
+                    </div>
+                </div>
+
+            </div>
         </div>
 
     </body>
     <footer>
- 
+
         <p>&copy; Company | Privacy | Terms</p>
- 
-      </footer>
+
+    </footer>
 </html>

@@ -22,9 +22,9 @@
                         </td>
                         <td>
                             <div class='col-sm-6 input-group navbar-right'>
-                                <input id='item_num' class="form-control" type='text' value='1'/>
+                                <input name='item_num' class="form-control" type='text' value='1'/>
                                 <span class="input-group-btn">
-                                     <a class='btn btn-default' href="<?= url('order/' . $ship->sname) ?>">add</a>
+                                    <button  onclick="loadXMLDoc('<?=$ship->sname?>')" class='btn btn-default'>add</button>
                                 </span>
                             </div>
                         </td>
@@ -58,7 +58,7 @@
                                             <?= $_SESSION['cart'][$item] ?>
                                         </td>
                                         <td>
-                                            <a class='btn btn-default' href="<?= url("rm/$item") ?>">cancel</a>
+                                            <button onclick="rm('<?=$item?>') "class='btn btn-default' >cancel</button>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

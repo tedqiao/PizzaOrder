@@ -23,7 +23,7 @@ class orderController extends Controller
         }
         //if(sizeof($_SESSION['cart'])==0)
         //return view('errors.noItems');
-        return view('home.home');
+        return view('home.mycart');
         //return view('home.mycart');
     }
     
@@ -45,6 +45,6 @@ class orderController extends Controller
         }
         //if(sizeof($_SESSION['cart'])==0)
         //return view('errors.noItems');
-        return view('home.home');
+        return view('home.mycart');
     }
 }
