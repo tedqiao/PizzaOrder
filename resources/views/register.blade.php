@@ -83,23 +83,8 @@ use App\fb_user;
             </div><!-- /.container-fluid -->
         </nav>
 
-        <div class='container'>
-            <div class='row'>
-                <div class='col-sm-6'>
-                    @yield('left')
-                </div>
-                <div class='col-sm-6'>
-                    @yield('right')
-                   
-                </div>
-            </div>
-
-        </div>
-
+                    @yield('content')
+             
     </body>
-    <footer>
- 
-        <p>&copy; Company | Privacy | Terms</p>
- 
-      </footer>
+
 </html>

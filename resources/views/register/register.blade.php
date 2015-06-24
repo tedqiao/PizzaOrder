@@ -1,4 +1,4 @@
-@extends('master')
+@extends('register')
 
 @section('content')
 <div class="container">
@@ -39,7 +39,7 @@
                 <div class="form-group">
                     <label for="InputEmail">Confirm Email</label>
                     <div class="input-group">
-                        <input type="email" class="form-control" id="EmailSec" name="InputEmail" placeholder="Confirm Email" required>
+                        <input type="email" class="form-control" id="Emailsec" name="Emailsec" placeholder="Confirm Email" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
@@ -47,6 +47,13 @@
                     <label for="InputEmail">Password</label>
                     <div class="input-group">
                         <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Password" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="InputEmail">Confirm Password</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="pwdsec" name="pwdsec" placeholder="Password" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>

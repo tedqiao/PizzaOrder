@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('content')
+@section('left')
 <div class='container'>
 <table class='table table-hover'>
     <tr>

@@ -18,12 +18,12 @@ class orderController extends Controller
              $_SESSION['cart'][$item]=1;
         }
         if(!isset($_SESSION['auth'])){
-            echo 'sry member only';
-            return;
+            //echo 'sry member only';
+            return view('errors.noLogin');
         }
-        if(sizeof($_SESSION['cart'])==0)
-        return view('errors.noItems');
-        return view('home.mycart');
+        //if(sizeof($_SESSION['cart'])==0)
+        //return view('errors.noItems');
+        return view('home.home');
         //return view('home.mycart');
     }
     
@@ -33,9 +33,9 @@ class orderController extends Controller
             return;
         }
             
-        if(sizeof($_SESSION['cart'])==0)
-        return view('errors.noItems');
-        return view('home.mycart');
+        //if(sizeof($_SESSION['cart'])==0)
+        //return view('errors.noItems');
+        return view('home.home');
     }
     
     function removeItem($item){
@@ -43,8 +43,8 @@ class orderController extends Controller
             if(isset($item,$_SESSION['cart'][$item]))
                 unset($_SESSION['cart'][$item]);
         }
-        if(sizeof($_SESSION['cart'])==0)
-        return view('errors.noItems');
-        return view('home.mycart');
+        //if(sizeof($_SESSION['cart'])==0)
+        //return view('errors.noItems');
+        return view('home.home');
     }
 }

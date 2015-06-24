@@ -2,7 +2,7 @@
 
 @extends('master')
 
-@section('content')
+@section('left')
 
 <div class="fixed" id="login">
 
@@ -51,5 +51,5 @@
     </form>
 </div>
 
-
+@endsection
 @stop
