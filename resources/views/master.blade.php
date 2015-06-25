@@ -39,7 +39,7 @@ use App\fb_user;
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li><a href="<?= url() ?>">Home <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">menu</a></li>
+                        <li><a href="<?=url('menu')?>">menu</a></li>
                         <li><a href="#">CheckOut</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -69,6 +69,7 @@ use App\fb_user;
                         if (isset($_SESSION['user'])):
                             $obj = unserialize($_SESSION['user']);
                             ?>
+                            <li><a href="<?= url('profile') ?>"><?= $obj->getName() ?></a></li>
                             <li><img class='img-circle' src="<?= $obj->getPhoto() ?>"></li>
                         <?php endif; ?>
                         <li>
@@ -84,12 +85,27 @@ use App\fb_user;
         </nav>
         @yield('login')
         <div id='tbody'>
-            <div class='container'>
+            <div  class='container'>
                 <div class='row'>
-                    <div class='col-sm-6'>
+                    <div id='side_bar' class='col-sm-2'>
+                        <ul>
+                            <li>
+                                category
+                                <ul>
+                                    <li>
+                                       cafe 
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                        @yield('main')
+                    <div id="res" class='col-sm-5'>
                         @yield('left')
                     </div>
-                    <div id="mydiv" class='col-sm-6'>
+                    
+                    <div id="mydiv" class='col-sm-4'>
                         @yield('right')
 
                     </div>

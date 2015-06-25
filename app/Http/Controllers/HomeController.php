@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
  * and open the template in the editor.
  */
 use Illuminate\Routing\Controller;
-
+use App\items;
 class HomeController extends Controller {
 
     function __construct() {
@@ -16,6 +16,12 @@ class HomeController extends Controller {
     public function index(){
         
         return view('home.home');
+    }
+    
+    public function menu(items $item){
+        $item=$item->getItemsWithName('');
+        return view('home.ships',['items'=>$item]);
+        
     }
 
 }

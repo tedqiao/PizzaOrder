@@ -54,6 +54,10 @@ class fb_user extends Model {
         return DB::insert('insert into facebookusers (id, email, photo,name,password) '
                         . 'values (?, ?,?,?,?)', [$this->id, $this->email, $this->photo, $this->name, $this->password]);
     }
+    
+     public function getName() {
+        return $this->name;
+    }
 
     //$table->timestamps();
 }

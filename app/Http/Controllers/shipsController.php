@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\ships;
+use App\items;
 class shipsController extends Controller
 {
     /**
@@ -15,9 +15,7 @@ class shipsController extends Controller
      * @return Response
      */
     
-    public function __construct() {
-        $shipcol=new ships();
-    }
+    
 
 
     public function index()
@@ -51,14 +49,14 @@ class shipsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show(ships $shipcol)
+    public function show(items $items)
             
     {   
         if(isset($_REQUEST['search']))
         $word=$_REQUEST['search'];
-        $ships=$shipcol->getshipwithname($word);
+        $items=$items->getItemsWithName($word);
         //print_r($ships);
-        return view('home.ships',['ships'=>$ships]);
+        return view('home.ships',['items'=>$items]);
     }
 
     /**

@@ -18,13 +18,7 @@
                     </a>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <a href="#" class="btn btn-info btn-block" >
-                        <i class="icon-twitter"></i> &nbsp;&nbsp;&nbsp;Login with Twitter
-                    </a>
-                </div>
-            </div>
+           
         </div>
         <div class="main"> 
 

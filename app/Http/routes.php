@@ -21,7 +21,8 @@ Route::get('cart','Ordercontroller@showCart');
 Route::get('login/fb','FbloginController@login');
 Route::get('logout', 'FbloginController@logout');
 Route::match(['get','post'],'login','loginController@login');
-
+Route::match(['get'],'menu','HomeController@menu');
+Route::match(['get'],'checkout','HomeController@menu');
 
 //register
 Route::get('register', function () {
