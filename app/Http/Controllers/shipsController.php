@@ -3,92 +3,39 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\items;
-class shipsController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    
-    
+use App\file;
+class shipsController extends Controller {
 
-
-    public function index()
-    {
-        //
+    public function show(items $items) {
+        if (isset($_REQUEST['search']))
+            $word = $_REQUEST['search'];
+        $items = $items->getItemsWithName($word);
+        return view('home.ships', ['items' => $items]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
-    public function store()
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show(items $items)
+    public function additem() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
-    {   
-        if(isset($_REQUEST['search']))
-        $word=$_REQUEST['search'];
-        $items=$items->getItemsWithName($word);
-        //print_r($ships);
-        return view('home.ships',['items'=>$items]);
+            $file=new file(); 
+            $path = "img/". $_FILES["uploadimage"]["name"];
+            $res_img=$file->upload($path,$_FILES["uploadimage"]["tmp_name"]);
+            $res_name=items::check($_POST['iname']);
+            if($res_name){
+                items::add($_POST['iname'], $_POST['price'], $_POST['category'], $res_img===true?$path:"");
+                $res=true;
+            }
+            return view('admin.addpage',['res'=>$res]);
+        }
+        
+        return view('admin.addpage');
+    }
+    
+    public function showWithCategory($item){
+         $items = items::getItemsWithCategory($item);
+        return view('home.ships', ['items' => $items,'category'=>$item]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update($id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

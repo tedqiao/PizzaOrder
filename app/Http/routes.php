@@ -23,11 +23,18 @@ Route::get('logout', 'FbloginController@logout');
 Route::match(['get','post'],'login','loginController@login');
 Route::match(['get'],'menu','HomeController@menu');
 Route::match(['get'],'checkout','HomeController@menu');
-
+Route::match(['get','post'],'additem','shipsController@additem');
 //register
 Route::get('register', function () {
     return view('register.register',['res'=>0]);
 });
+
+
+Route::get('category/{item}','shipsController@showWithCategory');
+
+
+
+
 
 Route::post('register', 'usersController@create');
 

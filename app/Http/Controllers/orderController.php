@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\items;
 class orderController extends Controller
 {
     
@@ -14,14 +14,14 @@ class orderController extends Controller
         if(isset($_SESSION['cart'])){
             if(isset($item,$_SESSION['cart'][$item])){
                 $_SESSION['cart'][$item]+=1;
-                $_SESSION['total']+=10;
+                $_SESSION['total']+=items::getPrice($item);
             }
             else{
             $_SESSION['cart'][$item]=1;
             if(!isset( $_SESSION['total']))
-            $_SESSION['total']=10;
+            $_SESSION['total']=items::getPrice($item);
             else
-            $_SESSION['total']+=10;    
+            $_SESSION['total']+=items::getPrice($item);    
             }
         }
         if(!isset($_SESSION['auth'])){
@@ -39,20 +39,24 @@ class orderController extends Controller
             echo 'sry member only';
             return;
         }
-            
-        //if(sizeof($_SESSION['cart'])==0)
-        //return view('errors.noItems');
         return view('home.home');
     }
     
     function removeItem($item){
          if(isset($_SESSION['cart'])){
             if(isset($item,$_SESSION['cart'][$item]))
-                 $_SESSION['total']-=$_SESSION['cart'][$item]*10;
+                 $_SESSION['total']-=$_SESSION['cart'][$item]*items::getPrice($item);
                 unset($_SESSION['cart'][$item]);
+                if($_SESSION['total']<1)
+                    unset($_SESSION['total']);
         }
         //if(sizeof($_SESSION['cart'])==0)
         //return view('errors.noItems');
         return view('home.mycart');
+    }
+    
+    function checkout(){
+        
+        
     }
 }

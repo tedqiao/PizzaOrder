@@ -1,3 +1,7 @@
+<div>
+    <h1>Cart</h1>
+</div>
+<hr>
 <div class="fixed-size2">
 <table class='table table-striped'>
     <tr>
@@ -28,7 +32,7 @@
             <?php endforeach; ?>
         <?php else: ?>
             <tr>
-                <td colspan="2">
+                <td colspan="3">
                     <div class="alert alert-info" role="alert">
                         NO item in your cart
                     </div>
@@ -39,7 +43,23 @@
     <?php endif; ?>
 </table>
  </div>
+<hr>
 <div id='total'>
+    <label>SubTotal:</label>
     <strong><?= isset($_SESSION['total']) ? $_SESSION['total'] : 0 ?></strong>
     <span class=''>$</span>
+</div>
+<div id='total'>
+    <label>Tax:</label>
+    <strong>0.0</strong>
+    <span class=''>$</span>
+</div>
+<div id='total'>
+    <label>Total:</label>
+    <strong><?= isset($_SESSION['total']) ? $_SESSION['total'] : 0 ?></strong>
+    <span class=''>$</span>
+</div>
+
+<div style="margin-left: 35%;height: 50px">
+    <button class="btn btn-primary">CheckOut</button>
 </div>

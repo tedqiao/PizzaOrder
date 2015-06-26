@@ -22,7 +22,7 @@ use App\fb_user;
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #843534">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -86,21 +86,12 @@ use App\fb_user;
         @yield('login')
         <div id='tbody'>
             <div  class='container'>
-                <div class='row'>
-                    <div id='side_bar' class='col-sm-2'>
-                        <ul>
-                            <li>
-                                category
-                                <ul>
-                                    <li>
-                                       cafe 
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                 
+                    <div id="aside" class='col-sm-2'>
+                        @yield('aside')
                     </div>
-                    
-                        @yield('main')
+                    @yield('main')
+                       
                     <div id="res" class='col-sm-5'>
                         @yield('left')
                     </div>
