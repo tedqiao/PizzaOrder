@@ -32,5 +32,14 @@ class items extends Model
         return DB::select("select * from items where category='$name'");
     }
     
+    public static function createOrder(){
+        
+    }
+    
+     public static function getOrderInfo(){
+        
+    }
+    
+    
     
 }

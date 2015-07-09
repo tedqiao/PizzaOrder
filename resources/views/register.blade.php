@@ -56,7 +56,7 @@ use App\fb_user;
                     </ul>
                     <form class="navbar-form navbar-left" action="<?= url() ?>" method="POST" role="search">
                         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-                        <?php $_SESSION['csr'] = csrf_token(); ?>
+                      <?php $_SESSION['csr'] = csrf_token(); ?>
                         <div class="form-group">
                             <input type='text' class='form-control' name='search' placeholder="Type name">
                         </div>
@@ -72,12 +72,12 @@ use App\fb_user;
                             <li><img class='img-circle' src="<?= $obj->getPhoto() ?>"></li>
                         <?php endif; ?>
                         <li>
-
+                            <?php if(!isset($_SESSION['auth'])):?>
+                            <button data-toggle="modal" data-target="#login">login</button>
+                            <?php else:?>
                             <a class='' href="<?= !isset($_SESSION['auth']) ? url('login') : url('logout') ?>"><?= isset($_SESSION['auth']) ? 'Log out' : 'Login' ?></a>
-
+                            <?php endif?>
                         </li>
-
-
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->

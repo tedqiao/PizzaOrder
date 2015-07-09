@@ -24,10 +24,7 @@ class orderController extends Controller
             $_SESSION['total']+=items::getPrice($item);    
             }
         }
-        if(!isset($_SESSION['auth'])){
-            //echo 'sry member only';
-            return view('errors.noLogin');
-        }
+      
         //if(sizeof($_SESSION['cart'])==0)
         //return view('errors.noItems');
         return view('home.mycart');
@@ -55,8 +52,8 @@ class orderController extends Controller
         return view('home.mycart');
     }
     
-    function checkout(){
-        
+    function placeOrder(){
+       echo $_POST['optradio'];
         
     }
 }

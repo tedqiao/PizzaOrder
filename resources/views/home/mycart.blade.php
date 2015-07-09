@@ -61,5 +61,5 @@
 </div>
 
 <div style="margin-left: 35%;height: 50px">
-    <button class="btn btn-primary">CheckOut</button>
+    <button onclick="check_out()" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#Modal">CheckOut</button>
 </div>

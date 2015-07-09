@@ -4,11 +4,11 @@
     <ul>
         <li><Strong data-target=".dashboard-menu" class="nav-header" > Category</Strong></li>
         <li><ul class="dashboard-menu nav nav-list ">
-                <li><a href=<?= url('category/Salads')?>></span> Salads</a></li>
-                <li><a href=<?= url('category/Calzones')?>></span> Calzones</a></li>
-                <li><a href=<?= url('category/Pizza')?>></span> Pizza</a></li>
-                <li><a href=<?= url('category/ClubSandwich')?>></span> Club Sandwich</a></li>
-                <li><a href=<?= url('category/Gyros')?>></span> Gyros</a></li>
+                <li><a href=<?= url('category/Salads') ?>></span> Salads</a></li>
+                <li><a href=<?= url('category/Calzones') ?>></span> Calzones</a></li>
+                <li><a href=<?= url('category/Pizza') ?>></span> Pizza</a></li>
+                <li><a href=<?= url('category/ClubSandwich') ?>></span> Club Sandwich</a></li>
+                <li><a href=<?= url('category/Gyros') ?>></span> Gyros</a></li>
             </ul></li>
         <li><a href="help.html" class="nav-header"><i class="fa fa-fw fa-question-circle"></i> Help</a></li>
 
@@ -17,12 +17,12 @@
 @endsection 
 @section('left')
 <div>
-    <h1><?= isset($category)?$category:'All menu' ?></h1>
+    <h1><?= isset($category) ? $category : 'All menu' ?></h1>
 </div>
 <div class="fixed-size">
     <table class='table table-striped'>
         <tr>
-           
+
             <th>
                 Name
             </th>
@@ -33,7 +33,7 @@
         </tr>
         <?php foreach ($items as $item): ?>
             <tr>
-               
+
                 <td>
                     <a href="#"><?= $item->iname ?></a>
                 </td>
@@ -120,7 +120,12 @@
 
 
 <div style="margin-left: 35%;height: 50px">
-    <button class="btn btn-primary">CheckOut</button>
+    <button onclick="check_out()" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#Modal">CheckOut</button>
 </div>
+
+
+
+
+
 @endsection
 @stop

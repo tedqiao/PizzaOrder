@@ -17,12 +17,17 @@ Route::post('/','shipsController@show');
 Route::get('order/{item}','Ordercontroller@addtoCart');
 Route::get('order/{item}/{num}','Ordercontroller@addtoCart');
 Route::get('rm/{item}','Ordercontroller@removeItem');
+
+Route::post('placeOrder','Ordercontroller@placeOrder');
+
 Route::get('cart','Ordercontroller@showCart');
-Route::get('login/fb','FbloginController@login');
+
 Route::get('logout', 'FbloginController@logout');
 Route::match(['get','post'],'login','loginController@login');
 Route::match(['get'],'menu','HomeController@menu');
-Route::match(['get'],'checkout','HomeController@menu');
+Route::match(['get'],'checkout',function (){
+    return view('home/check_out_box');
+});
 Route::match(['get','post'],'additem','shipsController@additem');
 //register
 Route::get('register', function () {
@@ -39,5 +44,5 @@ Route::get('category/{item}','shipsController@showWithCategory');
 Route::post('register', 'usersController@create');
 
 
-
+Route::get('login/fb','FbloginController@login');
 Route::get('login/fb/callback', 'FbloginController@callback');

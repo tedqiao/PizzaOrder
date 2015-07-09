@@ -22,24 +22,15 @@ use App\fb_user;
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #843534">
+        <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #843534;height: 5%;">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" id="fixed" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Brand</a>
-                </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li><a href="<?= url() ?>">Home <span class="sr-only">(current)</span></a></li>
-                        <li><a href="<?=url('menu')?>">menu</a></li>
+                        <li><a href="<?= url('menu') ?>">menu</a></li>
                         <li><a href="#">CheckOut</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -50,7 +41,7 @@ use App\fb_user;
                                 <li role="separator" class="divider"></li>
                                 <li><a href="#">Separated link</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><button class="" onclick="loadXMLDoc()">clickme</button></li>
+                                <li><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#login">CheckOut</button></li>
                             </ul>
                         </li>
                     </ul>
@@ -73,9 +64,11 @@ use App\fb_user;
                             <li><img class='img-circle' src="<?= $obj->getPhoto() ?>"></li>
                         <?php endif; ?>
                         <li>
-
-                            <a class='' href="<?= !isset($_SESSION['auth']) ? url('login') : url('logout') ?>"><?= isset($_SESSION['auth']) ? 'Log out' : 'Login' ?></a>
-
+                            <?php if(!isset($_SESSION['auth'])):?>
+                            <a data-toggle="modal" data-target="#login">login</a>
+                            <?php else:?>
+                            <a class='' href="<?=url('logout')?>" >Log out</a>
+                            <?php endif?>
                         </li>
 
 
@@ -83,25 +76,102 @@ use App\fb_user;
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-        @yield('login')
+        @yield('home')
+
         <div id='tbody'>
             <div  class='container'>
-                 
-                    <div id="aside" class='col-sm-2'>
-                        @yield('aside')
-                    </div>
-                    @yield('main')
-                       
-                    <div id="res" class='col-sm-5'>
-                        @yield('left')
-                    </div>
-                    
-                    <div id="mydiv" class='col-sm-4'>
-                        @yield('right')
 
-                    </div>
+                <div id="aside" class='col-sm-2'>
+                    @yield('aside')
+                </div>
+                @yield('main')
+
+                <div id="res" class='col-sm-5'>
+                    @yield('left')
                 </div>
 
+                <div id="mydiv" class='col-sm-4'>
+                    @yield('right')
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="modal fade" id="Modal" tabindex="2" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Place Order</h4>
+                    </div>
+                    <div id="check_out" class="modal-body">
+                        <?php if (sizeof($_SESSION['cart']) !== 0): ?>
+                            <form action='<?= url('placeOrder') ?>' method="POST">
+                                <div class="form-group">
+                                    <label for="recipient-name" class="control-label">Recipient:</label>
+                                    <input type="text" class="form-control" id="recipient-name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="control-label">Message:</label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="control-label">Message:</label>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" onclick="submit()">place order</button>
+                                </div>
+                            </form>
+                        <?php else: ?>
+                            <label for="message-text" class="control-label">No items in your cart</label>
+                        <?php endif; ?>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div  class="modal fade" tabindex="2" role="dialog" aria-labelledby="exampleModalLabel"id='login'>
+            <div id='login-form'>
+                <form action="" class="form-signin">
+                    <h3 class="heading-desc">
+                        <button type="button" data-dismiss="modal" class="close pull-right" aria-hidden="true">&times;</button>
+                        Login</h3>
+                    <div class="social-box">
+                        <div class="row mg-btm">
+                            <div class="col-md-12">
+                                <a href="<?= url('login/fb') ?>" class="btn btn-primary btn-block">
+                                    <i class="icon-facebook">&nbsp;&nbsp;&nbsp;Login with Facebook</i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="main">
+
+                        <input type="text" class="form-control" placeholder="Email" autofocus>
+                        <input type="password" class="form-control" placeholder="Password">
+
+
+                        <span class="clearfix"></span>
+                    </div>
+                    <div class="login-footer">
+                        <div class="row">
+                            <div class="col-xs-6 col-md-6">
+                                <div class="left-section">
+                                    <a href="">Forgot your password?</a>
+                                    <a href="<?= url('register') ?>">Sign up now</a>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-md-6 pull-right">
+                                <button type="submit" class="btn btn-large btn-danger pull-right">Login</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
             </div>
         </div>
 
@@ -111,4 +181,5 @@ use App\fb_user;
         <p>&copy; Company | Privacy | Terms</p>
 
     </footer>
+
 </html>

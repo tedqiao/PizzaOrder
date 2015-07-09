@@ -66,7 +66,7 @@ class FbloginController extends Controller {
                 echo " with message: " . $e->getMessage();
             }
             
-            return Redirect::away(url());
+            return Redirect::away(url('menu'));
         }
     }
 

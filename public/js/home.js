@@ -73,3 +73,52 @@ xmlhttp.onreadystatechange=function()
 xmlhttp.open("GET","http://localhost:8000/rm/"+sname+"/",true);
 xmlhttp.send();
 }
+
+
+function check_out()
+{
+
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {//alert("name");
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+     
+    document.getElementById("check_out").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("GET","http://localhost:8000/checkout/",true);
+xmlhttp.send();
+}
+
+
+
+$(document).ready(function(){
+    $("#aj").click(function(){
+               $.ajax({
+                   url:"http://localhost:8000/checkout/",
+                   method:'GET',
+             
+               }).done(function(text){
+                   alert('msg'+text);
+               });
+    })
+    
+    $("#order").click(function(){
+        window.location="http://localhost:8000/menu";
+        
+    })
+    
+    
+})
+
+
+
+
